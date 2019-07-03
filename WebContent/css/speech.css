@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+#results {
+/*	background: transparent;*/
+	height: 40%;
+	width: 240px;
+	margin-top: 300px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    min-height: 150px; 
+    }
+.interim {
+    color: gray;
+    }
+.final {
+    color: white;
+    font-weight: bold;
+    padding-right: 3px;
+    }
+.marquee {
+    margin: 20px auto;
+    }
+a.c1 {font-weight: normal;}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default, json-default">
+
+        <default-action-ref name="index" />
+
+        <action name="index">
+            <result>/test0.html</result>
+        </action>
+        
+        <action name="startCall" class="actions.VideoAction" method="startCall">
+        	<result name="success">/FunctionPage.jsp</result>
+        	<result name="error" >/index.action</result>
+        </action>
+        <!-- <action name="req" class="actions.RecoAction" method="req">
+        	<result type="json"></result>
+        </action> -->
+        
+        <action name="find" class="actions.RecoAction2" method="find">
+        	<result type="json"></result>
+        </action>
+        
+        <action name="end_skype">
+        	<result type="redirect">index.action</result>
+        </action>
+        
+        
+    </package>
+
+
+</struts>

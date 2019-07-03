@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test2">
+	
+	<select id="find1" parameterType="fingerData" resultType="alphabet">
+		select letter, division, indicator
+		from alphabet
+		where (index_x between #{index_x}-0.2 and #{index_x}+0.2)
+				and (index_y between #{index_y}-0.2 and #{index_y}+0.2)
+				and (index_z between #{index_z}-0.2 and #{index_z}+0.2)
+	</select>
+	
+	
+	<select id="find2" parameterType="hashmap" resultType="alphabet">
+	<!-- list를 매개변수로 넣는다면- -->
+		select letter, division, indicator
+		from alphabet
+		where   letter in 
+			<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+				#{item.letter}
+			</foreach>
+			and 
+			<!-- 여기 middle_x 가 없;;  매개변수 2개 줘야!! list 하나, fingerdata 하나.--> 
+				(middle_x between #{data.middle_x}-0.2 and #{data.middle_x}+0.2)
+				and (middle_y between #{data.middle_y}-0.2 and #{data.middle_y}+0.2)
+				and (middle_z between #{data.middle_z}-0.2 and #{data.middle_z}+0.2)
+
+				<!-- and (thumb_x between #{thumb_x}-0.2 and #{thumb_x}+0.2)
+				and (thumb_y between #{thumb_y}-0.2 and #{thumb_y}+0.2)
+				and (thumb_z between #{thumb_z}-0.2 and #{thumb_z}+0.2) -->
+	</select>
+
+	<select id="find3" parameterType="hashmap" resultType="alphabet">
+		select letter, division, indicator
+		from alphabet
+		where   letter in 
+			<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+				#{item.letter}
+			</foreach>
+			and 
+				(ring_x between #{data.ring_x}-0.2 and #{data.ring_x}+0.2)
+				and (ring_y between #{data.ring_y}-0.2 and #{data.ring_y}+0.2)
+				and (ring_z between #{data.ring_z}-0.2 and #{data.ring_z}+0.2)
+	</select>
+
+	<select id="find4" parameterType="hashmap" resultType="alphabet">
+		select letter, division, indicator
+		from alphabet
+		where   letter in 
+			<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+				#{item.letter}
+			</foreach>
+			and 
+				(thumb_x between #{data.thumb_x}-0.2 and #{data.thumb_x}+0.2)
+				and (thumb_y between #{data.thumb_y}-0.2 and #{data.thumb_y}+0.2)
+				and (thumb_z between #{data.thumb_z}-0.2 and #{data.thumb_z}+0.2)
+	</select>	
+
+	
+	<select id="find5" parameterType="hashmap" resultType="alphabet">
+		select letter, division, indicator
+		from alphabet
+		where   letter in 
+			<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+				#{item.letter}
+			</foreach>
+			and 
+				(little_x between #{data.little_x}-0.2 and #{data.little_x}+0.2)
+				and (little_y between #{data.little_y}-0.2 and #{data.little_y}+0.2)
+				and (little_z between #{data.little_z}-0.2 and #{data.little_z}+0.2)
+	</select>
+
+	<select id="search" parameterType="fingerData" resultType="alphabet">
+	select letter, division, indicator
+		from alphabet
+		where ((index_x between #{index_x}-0.2 and #{index_x}+0.2)
+				and (index_y between #{index_y}-0.2 and #{index_y}+0.2)
+				and (index_z between #{index_z}-0.2 and #{index_z}+0.2))
+				
+				and
+				
+				((middle_x between #{middle_x}-0.2 and #{middle_x}+0.2)
+				and (middle_y between #{middle_y}-0.2 and #{middle_y}+0.2)
+				and (middle_z between #{middle_z}-0.2 and #{middle_z}+0.2))
+				
+				and
+				
+				((thumb_x between #{thumb_x}-0.2 and #{thumb_x}+0.2)
+				and (thumb_y between #{thumb_y}-0.2 and #{thumb_y}+0.2)
+				and (thumb_z between #{thumb_z}-0.2 and #{thumb_z}+0.2))
+				
+				and
+				
+				((ring_x between #{ring_x}-0.2 and #{ring_x}+0.2)
+				and (ring_y between #{ring_y}-0.2 and #{ring_y}+0.2)
+				and (ring_z between #{ring_z}-0.2 and #{ring_z}+0.2))
+				
+				and
+				
+				((little_x between #{little_x}-0.2 and #{little_x}+0.2)
+				and (little_y between #{little_y}-0.2 and #{little_y}+0.2)
+				and (little_z between #{little_z}-0.2 and #{little_z}+0.2))
+				
+	</select>
+
+</mapper>
